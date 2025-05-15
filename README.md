@@ -7,7 +7,8 @@ an easy-to-sample from distribution, to estimate posterior-based quantities.
 
 # How is it done in this package?
 
-The first-order optimality condition $\nabla_{\eta}KL(q_\eta\mid \pi)$ with $\pi \propto \exp(f(x))$ and $q_{\eta}(x) = \exp(\eta^{\top}s(x))$ suggests the
+The first-order optimality condition $\nabla_{\eta}KL(q_\eta\mid \pi)$ with $\pi \propto \exp(f(x))$
+and $q_{\eta}(x) = \exp(\eta^{\top}s(x))$ suggests the
 following scheme
 
 ```math
@@ -18,14 +19,22 @@ which we iterate until convergence.
 All the involved expectations are approximated by Monte Carlo sampling.
 
 ## Fast inference for Gaussian distributions in $O(n^3)$
-When the variational family is the set of full-rank Gaussian distributions, the previous iteration requires inversion of $n^2 \times n^2$ matrices.
-A reparametrization trick allows us to avoid this computational burden, making exact inference possible with optimal complexity, i.e., $O(n^3)$ operations.
+
+When the variational family is the set of full-rank Gaussian distributions, the previous iteration requires inversion
+of $n^2 \times n^2$ matrices.
+A reparametrization trick allows us to avoid this computational burden, making exact inference possible with optimal
+complexity, i.e., $O(n^3)$ operations.
 
 # How to use it?
+
+A `pyproject.toml` file is provided to install the package and its dependencies, you can use
+```pip install .``` to install the package. Some experiments require additional packages which are listed in the
+`pyproject.toml` file as optional dependencies.
 
 See `LSVI/experiments` for some examples, including the variational approximation of the posterior of a logistic
 regression on a real dataset, the variable selection problem in a linear regression using the variational family of
 product of Bernoullis, and a stochastic movement model with intractable likelihood.
 
 # References
+
 NIPS25
